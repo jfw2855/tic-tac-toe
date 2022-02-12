@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 500px;
+    border: 4px red solid;
+}
+
+.container-rows {
+    display: flex;
+    flex-grow: 1;
+}
+
+.btn {
+    height: 166px;
+    width: 166px;
+}
