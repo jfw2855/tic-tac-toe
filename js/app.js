@@ -1,16 +1,15 @@
 // variables I need to make: current player, gameboard spaces
 let currentPlayer = "x";
 let winnerFound = false;
+let count = 0;
 const spaces = document.querySelectorAll(".btn");
 const restartBtn = document.getElementById("restart");
 let message = document.querySelector("h2");
 
 
-// store marker on gameboard
-   
-    // switch b/w players once marker is placed
-    //display message of current player to make a move
 
+
+// Adds an eventlistener to all spaces
 function startGame () {
     spaces.forEach(item => {
         item.addEventListener("click", markSpace)
@@ -19,30 +18,30 @@ function startGame () {
 
 startGame();
 
-
-         // don't allow marker to be changed once placed
+// Adds a marker to space based on current player, returns if space is already marked
 function markSpace (e) {
     if (e.target.innerHTML!=="") return;
     e.target.innerHTML=currentPlayer;
+    count++;
+    console.log(count)
 
-    checkWinner();
+// Invokes checkWinner() to see if there is a winner, if not, switches players & displays next player
     if (currentPlayer==="x") {
+        e.target.classList.add("X_CLASS");
+        checkWinner();
+        if (winnerFound===true) return;
         currentPlayer="o";
-        e.target.classList.add("X_CLASS")
-        message.innerHTML="Player O: Please make your selection"
+        message.innerHTML="Player O: Please make your selection";
     }
     else {
+        e.target.classList.add("O_CLASS");
+        checkWinner();
+        if (winnerFound===true) return;
         currentPlayer="x";
-        e.target.classList.add("O_CLASS")
-        message.innerHTML="Player X: Please make your selection"
+        message.innerHTML="Player X: Please make your selection";
+
     }
 }
-
-
-
-
-
-
 
 // Fxn to determine if a player has won or if there is a tie 
 
@@ -69,9 +68,15 @@ function checkWinner () {
     winnerCombos.forEach(item => {
         
         if (item.join("")==="xxx"||item.join("")==="ooo") {
-            console.log(`${item[0][0].toUpperCase()} is the winner!`);
+            message.innerHTML=`${currentPlayer.toUpperCase()} is the winner!`;
+            console.log("winner reached - ",item)
             winnerFound = true;
             endGame();
+        }
+        else if (count >= 9) {
+            console.log("its a tie reached")
+            message.innerHTML="It's a tie!";
+            winnerFound=true;
         }
     })
 
@@ -84,13 +89,14 @@ function endGame () {
         item.removeEventListener("click", markSpace)
     })
 }
-// event listener to reset gameboard w/o restarting game
 
-
+// event listener to reset gameboard 
 restartBtn.addEventListener("click", function () {
     winnerFound = false;
     currentPlayer = "x";
     endGame();
+    count = 0;
+    message.innerHTML="Let's play Tic Tac Toe! Player X, make your first move!";
     spaces.forEach(item => {
         item.innerHTML="";
         item.removeAttribute("class");
