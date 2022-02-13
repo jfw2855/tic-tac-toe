@@ -1,8 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
 body {
     display: flex;
     align-content: center;
     flex-direction: column;
 }
+
+#restart {
+    width: 50px;
+
+}
+
+
 
 header {
     display: flex;
@@ -14,7 +24,6 @@ header {
     flex-direction: column;
     height: 500px;
     width: 500px;
-    border: 4px red solid;
 }
 
 .container-rows {
@@ -25,4 +34,45 @@ header {
 .btn {
     height: 166px;
     width: 166px;
+    background-color: white;
 }
+
+.X_CLASS {
+    color: rgba(226, 98, 98, 0.7);
+    transition-duration: 0.5s;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 80px;
+}
+
+.O_CLASS {
+    color: rgba(87, 74, 207, 0.7);
+    transition-duration: 0.5s;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 80px;
+}
+
+#btn1,#btn2,#btn3 {
+    border-top: none;
+}
+
+#btn1,#btn4,#btn7 {
+    border-left: none;
+}
+
+#btn3,#btn6,#btn9 {
+    border-right: none;
+}
+
+#btn7,#btn8,#btn9 {
+    border-bottom: none;
+}
+
+footer {
+    background: black;
+}
+
+h2 {
+    background: white;
+}
+
+
