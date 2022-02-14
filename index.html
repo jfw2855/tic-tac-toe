@@ -10,7 +10,11 @@
 <body>
     <header>
         <h1>TIC TAC TOE</h1>
-        <button id="restart">restart</button>
+        <div>
+            <button id="restart">restart</button>
+            <button id="player">Player O</button>
+            <button id="computer">Computer</button>
+        </div>
     </header>
     <div class="container">
         <div class="container-rows">
@@ -28,6 +32,12 @@
             <button class="btn" id="btn8"></button>
             <button class="btn" id="btn9"></button>
         </div>
+    </div>
+    <div id="scoreBoard">
+        <div>SCOREBOARD</div>
+        <div >Player X: <span id="xScore">0</span></div>
+        <div >Player O: <span id="oScore">0</span></div>
+        <div >Ties: <span id="ties">0</span></div>
     </div>
     <footer>
         <h2>Let's play Tic Tac Toe! Player X, make your first move!</h2>
